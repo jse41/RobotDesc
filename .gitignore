@@ -1,0 +1,4 @@
+urdf_from_xacro.urdf 
+*.bak
+*~
+*.log

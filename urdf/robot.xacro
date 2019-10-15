@@ -1,4 +1,5 @@
-<robot name="jrobot">
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="jrobot">
 	<link name="base">
 		<visual>
 			<origin xyz="-0.2 0 0.95" rpy="0 0 0" />
@@ -84,23 +85,26 @@
 			</geometry>
 		</collision>
 	</link>
-	<link name="wheel_left">
-		<visual>
-			<origin xyz="-0.1 0.4 0" rpy="-1.5707 0 0" />
-			<geometry>
-				<cylinder radius="0.2" length="0.05" />
-			</geometry>
-			<material name="Cyan">
-			<color rgba="0 1.0 1.0 1.0"/>
-			</material>
-      		</visual>
-		<collision>
-			<origin xyz="-0.1 0.4 0" rpy="-1.5707 0 0" />
-			<geometry>
-				<cylinder radius="0.2" length="0.05" />
-			</geometry>
-		</collision>
-	</link>
+	<xacro:macro name="xacro_name" params="suffix reflect">
+		<link name="wheel_${suffix}">
+			<visual>
+				<origin xyz="-0.1 0.4 0" rpy="-1.5707 0 0" />
+				<geometry>
+					<cylinder radius="0.2" length="0.05" />
+				</geometry>
+				<material name="Cyan">
+				<color rgba="0 1.0 1.0 1.0"/>
+				</material>
+	      		</visual>
+			<collision>
+				<origin xyz="-0.1 0.4 0" rpy="-1.5707 0 0" />
+				<geometry>
+					<cylinder radius="0.2" length="0.05" />
+				</geometry>
+			</collision>
+		</link>
+	</xacro:macro>
+
 	<link name="wheel_center">
 		<visual>
 			<origin xyz="0 0.1 0" rpy="-1.5707 0 0" />
@@ -147,13 +151,17 @@
 		<child link="laser_horiz"/>
 		<!-- <limit effort="30" velocity="1.0" lower="-2.2" upper="0.7" /> -->
 	</joint>
-	<joint name="base_wheel_left_joint" type="fixed">
-		<!-- <origin xyz="0.2325 0.0001 1.9201" rpy="0.2325 -0.0001 1.9201" /> -->
-		<origin xyz="0. 0.000 0.0"/>
-		<parent link="base"/>
-		<child link="wheel_left"/>
-		<!-- <limit effort="30" velocity="1.0" lower="-2.2" upper="0.7" /> -->
-	</joint>
+
+	<xacro:macro name="xacro_name" params="suffix reflect">
+		<joint name="base_wheel_${suffix}_joint" type="fixed">
+			<!-- <origin xyz="0.2325 0.0001 1.9201" rpy="0.2325 -0.0001 1.9201" /> -->
+			<origin xyz="0. 0.000 0.0"/>
+			<parent link="base"/>
+			<child link="wheel_${suffix}"/>
+			<!-- <limit effort="30" velocity="1.0" lower="-2.2" upper="0.7" /> -->
+		</joint>
+	</xacro:macro>
+
 	<joint name="base_wheel_center_joint" type="fixed">
 		<!-- <origin xyz="0.2325 0.0001 1.9201" rpy="0.2325 -0.0001 1.9201" /> -->
 		<origin xyz="0. 0.000 0.0"/>
@@ -161,4 +169,6 @@
 		<child link="wheel_center"/>
 		<!-- <limit effort="30" velocity="1.0" lower="-2.2" upper="0.7" /> -->
 	</joint>
+
+	 <xacro:xacro_name suffix="leftL" reflect="1" />
 </robot>
