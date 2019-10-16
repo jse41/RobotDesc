@@ -11,6 +11,7 @@ For the complete model to be shown and stable, several steps need to occur.
 ### RVIZ Preview 
 To launch the simulation, the following needs to be run: 
 > display.launch use_xacro:=true 
+
 This will launch RVIZ showing the robot. The arg is not necessary, but the complete robot will not be shown unless the xacro is enabled. 
 This requires the complete the complete repo to be downloaded, as the RVIZ configuration file is loaded. (Note the blue color :)
 This will still have errors until joint states a published, but this can be resolved.
@@ -21,6 +22,7 @@ The joint state publisher resolves issues of non-fixed joints so the model knows
 #### Using the GUI 
 If a gui is desired to configure the joint states, the following needs to be run: 
 > rosparam set /use_gui true
+
 The joint state publisher can be started: 
 > rosrun joint_state_publisher joint_state_publisher
 
