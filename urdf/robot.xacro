@@ -88,7 +88,8 @@
 	<xacro:macro name="xacro_name" params="suffix reflect">
 		<link name="wheel_${suffix}">
 			<visual>
-				<origin xyz="-0.1 0.4 0" rpy="-1.5707 0 0" />
+				<origin xyz="-0.1 ${reflect * 0.4} 0" rpy="-1.5707 0 0"/>
+				<!-- <origin xyz="-0.1 0.4 0" rpy="-1.5707 0 0" /> -->
 				<geometry>
 					<cylinder radius="0.2" length="0.05" />
 				</geometry>
@@ -97,13 +98,16 @@
 				</material>
 	      		</visual>
 			<collision>
-				<origin xyz="-0.1 0.4 0" rpy="-1.5707 0 0" />
+				<origin xyz="-0.1 ${reflect * 0.4} 0" rpy="-1.5707 0 0"/>
+				<!-- <origin xyz="-0.1 0.4 0" rpy="-1.5707 0 0" /> -->
 				<geometry>
 					<cylinder radius="0.2" length="0.05" />
 				</geometry>
 			</collision>
 		</link>
 	</xacro:macro>
+	<xacro:xacro_name suffix="left" reflect="1" />
+	<xacro:xacro_name suffix="right" reflect="-1" />
 
 	<link name="wheel_center">
 		<visual>
@@ -170,5 +174,6 @@
 		<!-- <limit effort="30" velocity="1.0" lower="-2.2" upper="0.7" /> -->
 	</joint>
 
-	 <xacro:xacro_name suffix="leftL" reflect="1" />
+	 <xacro:xacro_name suffix="left" reflect="1" />
+	 <xacro:xacro_name suffix="right" reflect="-1" />
 </robot>

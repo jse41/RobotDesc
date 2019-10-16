@@ -1,14 +1,15 @@
 <launch> 
 
-	<arg name="use_xacro" default="false" />
+	<arg name="use_xacro" default="0" />
 
-	<arg if="($arg use_xacro)" name="filename" defailt="robot.xacro" />
-	<arg unless="($arg use_xacro)" name="filename" defailt="robot.urdf" />
+
+	<arg if="$(arg use_xacro)" name="filename" default="robot.xacro" />
+	<arg unless="$(arg use_xacro)" name="filename" default="robot.urdf" />
 
 	<arg name="file" default="$(find RobotDesc)/urdf/$(arg filename)" />
 
-	<param if="$(arg use_xacro)" name="robot_description" command="$(findxacro)/xacro.py --inorder $(arg file)" />  
-	<param else="$(arg use_xacro)" name="robot_description" textfile="$(arg file)" />
+	<param if="$(arg use_xacro)" name="robot_description" command="$(find xacro)/xacro.py --inorder $(arg file)" />  
+	<param unless="$(arg use_xacro)" name="robot_description" textfile="$(arg file)" />
 
 	<node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" />
 
