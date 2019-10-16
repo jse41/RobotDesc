@@ -1,7 +1,11 @@
 Jacob Engelbrecht
+
 October 17, 2019 
+
 Professor Lee
+
 Modern Robotic Programming
+
 
 # URDF Lab 4
 
@@ -31,7 +35,7 @@ If status transforms are desired, the following static commands can be run:
 
 
 ## Issues 
-There were some issues 
+There were some issues I ran into while completeling this lab. 
 
 ### Axes
 I had a difficult time having the wheels rotate correctly. I figured out that the issue was related to the axis, which I somewhat resolved.
