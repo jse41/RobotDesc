@@ -15,11 +15,13 @@
 	<node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" />
 
 	<param if="$(arg use_gui)" name="/use_gui" value="true" />  
-	<node if="$(arg use_gui)" name="joint_state_publisher" type="joint_state_publisher" pkg="joint_state_publisher" />
+	<node name="joint_state_publisher" type="joint_state_publisher" pkg="joint_state_publisher" />
 
-	<node pkg="tf2_ros" type="static_transform_publisher" name="static_transform_publisher_left" args="0 0.365 0.2 -1.57 0 0 wheel_left base" />
-	<node pkg="tf2_ros" type="static_transform_publisher" name="static_transform_publisher_right" args="0 -0.365 0.2 -1.57 0 0 wheel_right base" />
-	<node pkg="tf2_ros" type="static_transform_publisher" name="static_transform_publisher_center" args="0 -0.365 0.2 -1.57 0 0 wheel_center base" />
+	<node unless="$(arg use_gui)" pkg="tf2_ros" type="static_transform_publisher" name="static_transform_publisher_left" args="0 0.365 0.2 -1.57 0 0 wheel_left base" />
+	<node unless="$(arg use_gui)" pkg="tf2_ros" type="static_transform_publisher" name="static_transform_publisher_right" args="0 -0.365 0.2 -1.57 0 0 wheel_right base" />
+	<node unless="$(arg use_gui)" pkg="tf2_ros" type="static_transform_publisher" name="static_transform_publisher_center" args="0 -0.365 0.2 -1.57 0 0 wheel_center base" />
+
+	<!-- <node unless="$(arg use_gui)" pkg="rostopic" type="rostopic" name="rostopic" args="pub -1 /joint_states sensor_msgs/JointState &quot;header: {seq: 101, stamp: {secs: 1573457, nsecs: 0}, frame_id: ''} &#10; &#13; name: se_wheel_right_joint'] position: [0] velocity: [0] effort: [0]&quot;" /> -->
 
 	<node pkg="rviz" type="rviz" name="rviz" args="-d $(find RobotDesc)/config/config.rviz" required="true" />
 
