@@ -12,13 +12,17 @@ Modern Robotic Programming
 ## How to Run 
 For the complete model to be shown and stable, several steps need to occur. 
 
-### Run RVIZ with new IMU model 
+### Choosing the Correct Launch File
+There are two launch files to choose from, one is generated for Lab 5 with an IMU unit, and the other is the previous model from lab 4. 
+
+
+#### Run RVIZ with new IMU model 
 To display the RVIZ containing the new base link in addition to the IMU, launch:
-> lab5.launch use_xacro:=true
+> lab5.launch 
 
 Now the new links can be seen but the robot appears the same. 
 
-### RVIZ Preview with Lab 4 Model
+#### RVIZ Preview with Lab 4 Model
 To launch the simulation prior to IMU addition, the following needs to be run: 
 > display.launch use_xacro:=true 
 
@@ -35,6 +39,20 @@ If a gui is desired to configure the joint states, simply one more arg needs to 
 
 #### Using Static Publishers 
 If status transforms are desired, the default launch file can be run. 
+
+### Other Arguments to be passed to Launch File
+These are specific to lab 5 so the lab5.launch file must be used for all of these to be applicable. 
+> use_xacro
+This is true by default and uses the xacro file to create the URDF model for this lab
+
+> use_gui 
+This is set to false by default as static publishers are used for joints instead of being controlled by a GUI. 
+
+> use_robot_state_publisher
+This is set to false by default as rosbag information will typically need this channel instead of an arbitrary user.
+
+> use_sim_time
+This is false by default, but can be set to tue to enbale Gazebo to control the ros clock and minimize errors caused in RViz when viewing data. 
 
 ## Issues 
 There were some issues I ran into while completeling this lab. 

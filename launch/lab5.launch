@@ -1,8 +1,9 @@
 <launch> 
 
-	<arg name="use_xacro" default="0" />
+	<arg name="use_xacro" default="1" />
 	<arg name="use_gui" default="0" />
-	<arg name="use_robot_state_publisher" default="true"/>
+	<arg name="use_robot_state_publisher" default="1"/>
+	<arg name="use_sim_time" default="0"/>
 
 
 	<arg if="$(arg use_xacro)" name="filename" default="robot.xacro" />
@@ -12,6 +13,7 @@
 
 	<param if="$(arg use_xacro)" name="robot_description" command="$(find xacro)/xacro.py --inorder $(arg file)" />  
 	<param unless="$(arg use_xacro)" name="robot_description" textfile="$(arg file)" />
+	<param if="$(arg use_sim_time)" name="/use_sim_time" value="true" />
 
 	<node if="$(arg use_robot_state_publisher)" pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" />
 
@@ -21,6 +23,7 @@
 	<node unless="$(arg use_gui)" pkg="tf2_ros" type="static_transform_publisher" name="static_transform_publisher_left" args="0 0.365 0.2 -1.57 0 0 wheel_left base" />
 	<node unless="$(arg use_gui)" pkg="tf2_ros" type="static_transform_publisher" name="static_transform_publisher_right" args="0 -0.365 0.2 -1.57 0 0 wheel_right base" />
 	<node unless="$(arg use_gui)" pkg="tf2_ros" type="static_transform_publisher" name="static_transform_publisher_center" args="0 -0.365 0.2 -1.57 0 0 wheel_center base" />
+
 
 	<!-- <node unless="$(arg use_gui)" pkg="rostopic" type="rostopic" name="rostopic" args="pub -1 /joint_states sensor_msgs/JointState &quot;header: {seq: 101, stamp: {secs: 1573457, nsecs: 0}, frame_id: ''} &#10; &#13; name: se_wheel_right_joint'] position: [0] velocity: [0] effort: [0]&quot;" /> -->
 
