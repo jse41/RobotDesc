@@ -54,6 +54,11 @@ This is set to false by default as rosbag information will typically need this c
 > use_sim_time
 This is false by default, but can be set to tue to enbale Gazebo to control the ros clock and minimize errors caused in RViz when viewing data. 
 
+## RVIZ 
+
+I want to note that there are other RVIZ views given. For viewing lab4, there exists a view configuration that does not attempt to load the 
+lazer topics, and then there is another view which also includes the 10 trails if those are desired. 
+
 ## Issues 
 There were some issues I ran into while completeling this lab. 
 
