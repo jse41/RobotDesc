@@ -1,16 +1,18 @@
 Jacob Engelbrecht
 
-October 17, 2019 
+October 29, 2019 
 
 Professor Lee
 
 Modern Robotic Programming
 
 
-# URDF Lab 4
+# URDF Lab 5
 
 ## How to Run 
 For the complete model to be shown and stable, several steps need to occur. 
+
+
 
 ### RVIZ Preview 
 To launch the simulation, the following needs to be run: 

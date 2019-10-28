@@ -2,7 +2,7 @@
 
 	<arg name="use_xacro" default="0" />
 	<arg name="use_gui" default="0" />
-	<arg name="use_robot_state_publisher" default="1"/>
+	<arg name="use_robot_state_publisher" Type="bool" default="true"/>
 
 
 	<arg if="$(arg use_xacro)" name="filename" default="robot.xacro" />
@@ -13,7 +13,7 @@
 	<param if="$(arg use_xacro)" name="robot_description" command="$(find xacro)/xacro.py --inorder $(arg file)" />  
 	<param unless="$(arg use_xacro)" name="robot_description" textfile="$(arg file)" />
 
-	<node if="(arg use_robot_state_publisher)" pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" />
+	<node if="$(arg use_robot_state_publisher)" pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" />
 
 	<param if="$(arg use_gui)" name="/use_gui" value="true" />  
 	<node name="joint_state_publisher" type="joint_state_publisher" pkg="joint_state_publisher" />
