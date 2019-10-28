@@ -4,7 +4,7 @@
 	<arg name="use_gui" default="0" />
 
 
-	<arg if="$(arg use_xacro)" name="filename" default="robot.xacro" />
+	<arg if="$(arg use_xacro)" name="filename" default="robotLab4.xacro" />
 	<arg unless="$(arg use_xacro)" name="filename" default="robot.urdf" />
 
 	<arg name="file" default="$(find RobotDesc)/urdf/$(arg filename)" />

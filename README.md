@@ -12,10 +12,14 @@ Modern Robotic Programming
 ## How to Run 
 For the complete model to be shown and stable, several steps need to occur. 
 
+### Run RVIZ with new IMU model 
+To display the RVIZ containing the new base link in addition to the IMU, launch:
+> lab5.launch use_xacro:=true
 
+Now the new links can be seen but the robot appears the same. 
 
-### RVIZ Preview 
-To launch the simulation, the following needs to be run: 
+### RVIZ Preview with Lab 4 Model
+To launch the simulation prior to IMU addition, the following needs to be run: 
 > display.launch use_xacro:=true 
 
 This will launch RVIZ showing the robot. The arg is not necessary, but the complete robot will not be shown unless the xacro is enabled. 

@@ -1,5 +1,5 @@
 <?xml version="1.0"?> 
-<robo xmlns:xacro="http://www.ros.org/wiki/xacro" name="navvis_m6">    
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="navvis_m6">    
 	<xacro:include filename="$(find RobotDesc)/urdf/robotLab4.xacro" />    
 	<link name="base_link" />   
 	<joint name="base_link_base_joint" type="fixed">
