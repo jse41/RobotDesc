@@ -43,15 +43,19 @@ If status transforms are desired, the default launch file can be run.
 ### Other Arguments to be passed to Launch File
 These are specific to lab 5 so the lab5.launch file must be used for all of these to be applicable. 
 > use_xacro
+
 This is true by default and uses the xacro file to create the URDF model for this lab
 
 > use_gui 
+
 This is set to false by default as static publishers are used for joints instead of being controlled by a GUI. 
 
 > use_robot_state_publisher
+
 This is set to false by default as rosbag information will typically need this channel instead of an arbitrary user.
 
 > use_sim_time
+
 This is false by default, but can be set to tue to enbale Gazebo to control the ros clock and minimize errors caused in RViz when viewing data. 
 
 ## RVIZ 
